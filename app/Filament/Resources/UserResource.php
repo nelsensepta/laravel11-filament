@@ -9,6 +9,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -46,16 +47,23 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('email')->searchable(),
-                TextColumn::make('email')->badge(),
-
+                // TextColumn::make('email')->badge(),
+                BadgeColumn::make('roles.name')
+                    ->colors([
+                        'primary' => "admin",
+                        'warning' => 'penulis',
+                        'success' => 'super_admin',
+                        'danger' => 'Akuntansi',
+                    ]),
                 // Tidak Dinamis Berdasarkan Role
-                TextColumn::make('roles.name')
-                    ->badge()
-                    ->color(fn(string $state): string => match ($state) {
-                        'admin' => 'warning',
-                        'penulis' => 'success',
-                        'super_admin' => 'danger',
-                    }),
+                // TextColumn::make('roles.name')
+                //     ->badge()
+                //     ->color(fn(string $state): string => match ($state) {
+                //         'admin' => 'warning',
+                //         'penulis' => 'success',
+                //         'super_admin' => 'danger',
+                //         'Akuntansi' => 'danger',
+                //     }),
             ])
             ->filters([
                 //
