@@ -9,7 +9,10 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+
+// use Tables\Columns\TextColumn;
 
 class UserResource extends Resource
 {
@@ -41,9 +44,18 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable(),
-                Tables\Columns\TextColumn::make('email')->searchable(),
-                // Tables\Columns\TextColumn::make('role')->searchable(),
+                TextColumn::make('name')->searchable(),
+                TextColumn::make('email')->searchable(),
+                TextColumn::make('email')->badge(),
+
+                // Tidak Dinamis Berdasarkan Role
+                TextColumn::make('roles.name')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'admin' => 'warning',
+                        'penulis' => 'success',
+                        'super_admin' => 'danger',
+                    }),
             ])
             ->filters([
                 //

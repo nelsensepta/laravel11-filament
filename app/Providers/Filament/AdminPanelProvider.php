@@ -36,7 +36,9 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->spa()
             ->topNavigation()
-            ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
+            ->plugins([
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+            ])
             // ->databaseNotifications()
             ->path('admin')
             ->login()
