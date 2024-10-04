@@ -7,6 +7,7 @@ use Filament\Http\Middleware\{
     DisableBladeIconComponents,
     DispatchServingFilamentEvent
 };
+use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
 use Filament\{
     Pages,
     Panel,
@@ -35,6 +36,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->spa()
             ->topNavigation()
+            ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
             // ->databaseNotifications()
             ->path('admin')
             ->login()
