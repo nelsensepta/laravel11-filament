@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Navigation\NavigationGroup;
+// use Filament\Panel;
 use Filament\Http\Middleware\{
     Authenticate,
     DisableBladeIconComponents,
@@ -35,7 +37,19 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->spa()
-            ->topNavigation()
+            // ->topNavigation()
+            // ->navigationGroups([
+            //     NavigationGroup::make()
+            //          ->label('Shop')
+            //          ->icon('heroicon-o-shopping-cart'),
+            //     NavigationGroup::make()
+            //         ->label('Blog')
+            //         ->icon('heroicon-o-pencil'),
+            //     NavigationGroup::make()
+            //         ->label(fn (): string => __('navigation.settings'))
+            //         ->icon('heroicon-o-cog-6-tooth')
+            //         ->collapsed(),
+            // ])
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
             ])

@@ -19,6 +19,20 @@ class CategoryResource extends Resource
     // Icon Sidebar
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
+    // Custom Navigation Label
+    // protected static ?string $navigationLabel = 'Custom Navigation Label';
+
+    protected static ?string $navigationGroup = 'Blog';
+
+    // protected static ?string $navigationGroup = 'Posts';
+
+    // protected static ?string $navigationGroup = 'Settings';
+
+    // public static function getNavigationBadge(): ?string
+    // {
+    //     return static::getModel()::count();
+    // }
+
     // Form Schema
     public static function form(Form $form): Form
     {
